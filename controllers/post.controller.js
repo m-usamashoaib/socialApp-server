@@ -19,7 +19,7 @@ exports.createPost = async (req, res) => {
     if (newPostData.videoUrl) {
       newPostData.videoUrl = saveVideos(req, "post");
     }
-
+console.log(newPostData,"newpostdata")
     const post = await Post.create(newPostData);
     const user = await User.findById(req.user._id);
     await user.updateOne({ $push: { posts: post._id } });
@@ -130,12 +130,16 @@ exports.commentPost = async (req, res) => {
 // get timeline
 exports.timelinePosts = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    
+    console.log("timelineposts hit")
+    const user = await User.findById(req.user._id);    
     let users = [...user.followings, req.user._id];
-
+    
+    
     let posts = await Post.find({ owner: { $in: users } }).populate(
       "owner comments.user share.user"
     );
+    
     posts = posts.sort((a, b) => b.createdAt - a.createdAt);
     json(res, 200, null, posts);
   } catch (error) {

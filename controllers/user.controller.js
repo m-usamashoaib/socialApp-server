@@ -169,7 +169,7 @@ exports.updateCover = async (req, res) => {
 
 // get me profile
 exports.profileMe = async (req, res) => {
-  try {
+  try {    
     const user = await User.findById(req.user._id).populate("posts");
     if (!user) return json(res, 404, "User Not Found");
     json(res, 200, null, user);
