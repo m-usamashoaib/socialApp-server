@@ -38,7 +38,7 @@ exports.register = async (req, res) => {
     //     secret: email,
     //   },
     //   {
-    //     headers: { "private-key": "fe65668a-8125-4fec-ba5c-a3c85ae4260e" },
+    //     headers: { "private-key": process.env.CHAT_ENGINE_PRIVATE_KEY },
     //   }
     // );
 
@@ -71,7 +71,7 @@ exports.login = async (req, res) => {
     //     secret: email,
     //   },
     //   {
-    //     headers: { "private-key": "fe65668a-8125-4fec-ba5c-a3c85ae4260e" },
+    //     headers: { "private-key": process.env.CHAT_ENGINE_PRIVATE_KEY },
     //   }
     // );
 
