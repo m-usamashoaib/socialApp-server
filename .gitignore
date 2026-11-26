@@ -396,3 +396,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Node.js environment files: keep secrets out of Git
+.env
+.env.*
+!.env.example
+config/.env
